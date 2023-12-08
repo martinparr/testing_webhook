@@ -1,17 +1,24 @@
-#created by mp (aug2023).
+# This is a basic workflow that is manually triggered
+name: Test reminder
 
-name: example workflow
-
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
 on:
-#  push:
-#     branches: [ main ]
-#  pull_request:
-#  issue_comment:
-#  schedule:
-#    cron: "0 9 * * 1"
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  pull_request:
+    branches: [ main ]
 
-  workflow_dispatch:
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-  
+  test_commentary:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: Webhook
+      uses: distributhor/workflow-webhook@v3
+      with:
+        url: "https://hooks.zapier.com/hooks/catch/12721732/3flxlxi/"
+        json: '{ "repository": "${{github.event.repository.full_name}}", "number": "${{github.event.number}}", "created_at": "${{github.event.pull_request.created_at}}", "updated_at": "${{github.event.pull_request.updated_at}}" }'
