@@ -23,4 +23,4 @@ jobs:
       uses: distributhor/workflow-webhook@v3
       with:
         webhook_url: "https://hooks.zapier.com/hooks/catch/12721732/3flxlxi/"
-        json: '{ "repository": "${{github.event.repository.full_name}}", "number": "${{github.event.number}}", "created_at": "${{github.event.pull_request.created_at}}", "updated_at": "${{github.event.pull_request.updated_at}}" }'
+    #  json: '{ "repository": "${{github.event.repository.full_name}}", "number": "${{github.event.number}}", "created_at": "${{github.event.pull_request.created_at}}", "updated_at": "${{github.event.pull_request.updated_at}}" }'
